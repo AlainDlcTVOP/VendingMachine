@@ -8,6 +8,11 @@ namespace VendingMachine
 {
      class Cheese : Product
     {
+       
+        
+       
+
+
         public override void Examine()
         {
             Console.WriteLine("Is");

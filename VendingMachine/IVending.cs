@@ -8,9 +8,9 @@ namespace VendingMachine
 {
      interface IVending
     {
-        int Purchase(int input);
-        List<String> ShowAll();
-        int InsertMoney(int money);
-        Dictionary<int, int> EndTransaction();
+        public Product Purchase(int input);
+        public void ShowAll();
+        public int InsertMoney(int money);
+        public void EndTransaction();
     }
 }
