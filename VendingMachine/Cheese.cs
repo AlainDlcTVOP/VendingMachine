@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VendingMachine
 {
-     class Cheese : Machine
+     class Cheese : Product
     {
         public override void Examine()
         {

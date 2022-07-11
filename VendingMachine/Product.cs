@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VendingMachine
 {
-    abstract class Machine : IVending
+    abstract class Product : IVending
     {
         public Dictionary<int, int> EndTransaction()
         {
@@ -14,6 +14,7 @@ namespace VendingMachine
         }
 
         public abstract void Examine();
+        
 
         public int InsertMoney(int money)
         {
