@@ -34,6 +34,36 @@ namespace VendingMachine
             drink.Price = 50;
             products.Add(drink);
 
+            Cheese cheese1 = new Cheese();
+            cheese.Name = "blue cheese";
+            cheese.Price = 89;
+            products.Add(cheese1);
+
+            Meet meet1 = new Meet();
+            meet1.Name = "oxfile";
+            meet1.Price = 201;
+            products.Add(meet1);
+
+            Drink drink1 = new Drink();
+            drink1.Name = "Vino tinto";
+            drink1.Price = 50;
+            products.Add(drink1);
+
+            Cheese cheese2 = new Cheese();
+            cheese2.Name = "blue cheese";
+            cheese2.Price = 89;
+            products.Add(cheese2);
+
+            Meet meet2 = new Meet();
+            meet2.Name = "oxfile";
+            meet2.Price = 201;
+            products.Add(meet2);
+
+            Drink drink2 = new Drink();
+            drink2.Name = "Vino tinto";
+            drink2.Price = 50;
+            products.Add(drink2);
+
         }
 
         
@@ -45,7 +75,10 @@ namespace VendingMachine
 
         public int InsertMoney(int money)
         {
-            throw new NotImplementedException();
+            int[] denominations = { 1, 5, 10, 20, 50, 100, 500, 1000 };
+
+            return money;
+           
         }
 
         public Product Purchase(int input)
