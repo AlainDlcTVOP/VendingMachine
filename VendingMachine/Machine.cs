@@ -138,7 +138,7 @@ namespace VendingMachine
                 if (antal > 0)
                 {
                     Console.WriteLine("You get back:");
-                    Console.WriteLine("{1} x {0}kr", val, antal);
+                    Console.WriteLine($"{val} x {antal}kr");
 
                 }
             }
