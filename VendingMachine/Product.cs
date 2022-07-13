@@ -10,8 +10,19 @@ namespace VendingMachine
     {
 
 
+        public Product(string name, int price)
+        {
+            Name = name;
+            Price = price;
+            _index++;
+            Id = _index;
+        }
+
         public string Name { get; set; }
         public int Price { get; set; }
+        public int Id { get; set; }
+
+        private static int _index = 0;
         public abstract void Use();
         public abstract void Examine();
 

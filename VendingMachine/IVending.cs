@@ -8,7 +8,7 @@ namespace VendingMachine
 {
      interface IVending
     {
-        public Product Purchase(int input);
+        public void Purchase();
         public void ShowAll();
         public int InsertMoney(int money);
         public void EndTransaction();

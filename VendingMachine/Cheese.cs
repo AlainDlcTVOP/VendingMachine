@@ -8,10 +8,9 @@ namespace VendingMachine
 {
      class Cheese : Product
     {
-       
-        
-       
-
+        public Cheese(string name, int price) : base(name, price)
+        {
+        }
 
         public override void Examine()
         {

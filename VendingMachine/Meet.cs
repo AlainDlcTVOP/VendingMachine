@@ -8,6 +8,10 @@ namespace VendingMachine
 {
      class Meet : Product
     {
+        public Meet(string name, int price) : base(name, price)
+        {
+        }
+
         public override void Examine()
         {
             Console.WriteLine("Is");

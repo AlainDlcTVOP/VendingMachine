@@ -9,64 +9,50 @@ namespace VendingMachine
    
     internal class Machine : IVending
     {
+
         List<Product> products = new List<Product>();
+
+        public int AviableFound { get; set; }
 
         public Machine()
         {
+            AviableFound = 15000;
+            
            CreateListOfProducts();
             
+        }
+        public void Start()
+        {
+            Console.WriteLine("Feel free to enter your choice ");
         }
 
         private void CreateListOfProducts()
         {
-            Cheese cheese = new Cheese();
-            cheese.Name = "blue cheese";
-            cheese.Price = 89;
+            Cheese cheese = new Cheese("Blue cheese", 9);
+            products.Add(cheese);
+            cheese = new Cheese("Cheddar", 12);
+            products.Add(cheese);
+            cheese = new Cheese("Brie", 3);
             products.Add(cheese);
 
-            Meet meet = new Meet();
-            meet.Name = "oxfile";
-            meet.Price = 201;
+            Meet meet = new Meet("Fillet of beef", 40);
+            products.Add(meet);
+            meet = new Meet("Sirloin", 16);
+            products.Add(meet);
+            meet = new Meet("Ground beef", 8);
             products.Add(meet);
 
-            Drink drink = new Drink();
-            drink.Name = "Vino tinto";
-            drink.Price = 50;
+            Drink drink = new Drink("Rom", 20);
+            products.Add(drink);
+            drink = new Drink("Vodka", 40);
+            products.Add(drink);
+            drink = new Drink("Tequila", 20);
             products.Add(drink);
 
-            Cheese cheese1 = new Cheese();
-            cheese.Name = "blue cheese";
-            cheese.Price = 89;
-            products.Add(cheese1);
-
-            Meet meet1 = new Meet();
-            meet1.Name = "oxfile";
-            meet1.Price = 201;
-            products.Add(meet1);
-
-            Drink drink1 = new Drink();
-            drink1.Name = "Vino tinto";
-            drink1.Price = 50;
-            products.Add(drink1);
-
-            Cheese cheese2 = new Cheese();
-            cheese2.Name = "blue cheese";
-            cheese2.Price = 89;
-            products.Add(cheese2);
-
-            Meet meet2 = new Meet();
-            meet2.Name = "oxfile";
-            meet2.Price = 201;
-            products.Add(meet2);
-
-            Drink drink2 = new Drink();
-            drink2.Name = "Vino tinto";
-            drink2.Price = 50;
-            products.Add(drink2);
 
         }
 
-        
+
 
         public void EndTransaction()
         {
@@ -81,9 +67,23 @@ namespace VendingMachine
            
         }
 
-        public Product Purchase(int input)
+        public void Purchase()
         {
-            throw new NotImplementedException();
+            Console.WriteLine($"Use id o purcase your product");
+            int val = int.Parse(Console.ReadLine());
+            foreach (Product product in products)
+            {
+                if (product.Id == val)
+                {
+
+                    if (product.Price <= AviableFound)
+                    {
+                        AviableFound -= product.Price;
+             
+                        Console.WriteLine($"now is {AviableFound} kr");
+                    }
+                }
+            }
         }
 
         public void ShowAll()
@@ -92,7 +92,7 @@ namespace VendingMachine
 
             foreach(Product product in products)
             {
-                Console.WriteLine( product.Price);
+                Console.WriteLine($"id:{product.Id} Product {product.Name} Cost = {product.Price}");
             }
                 
 
