@@ -12,13 +12,21 @@ namespace VendingMachine
 
         List<Product> products = new List<Product>();
 
-        public int AviableFound { get; set; }
+        public static int[] kr = new int[] { 1000, 500, 200, 100, 50, 20, 10, 5, 2, 1 };
+
+
+        public static int kronorpool { get; set; }
+       
+        int peng = 0;
 
         public Machine()
         {
-            AviableFound = 15000;
-            
-           CreateListOfProducts();
+
+
+
+
+            InsertMoney();
+            CreateListOfProducts();
             
         }
         public void Start()
@@ -59,32 +67,82 @@ namespace VendingMachine
             throw new NotImplementedException();
         }
 
-        public int InsertMoney(int money)
+        public void InsertMoney( )
         {
-            int[] denominations = { 1, 5, 10, 20, 50, 100, 500, 1000 };
+            //1kr, 5kr,10kr,20kr, 50kr, 100kr, 500kr and 1000kr.
+            while (true)
+            {
+                bool test = true;
+                Console.Write("Insert money: ");
+                string inputcoin = Console.ReadLine();
+                try
+                {
+                    test = int.TryParse(inputcoin, out peng);
+                }
+                catch
+                {
+                   
+                }
 
-            return money;
+                bool acceptable = false;
+                for (int i = 0; i < kr.Length; i++)
+                {
+                    if (peng == kr[i]) acceptable = true;
+                    if (acceptable) break;
+                }
+
+                if (test && acceptable) break; 
+                else Console.WriteLine("Error");
+            }
+            kronorpool = kronorpool + peng;
+
            
-        }
 
-        public void Purchase()
+        }
+       
+           
+           
+
+
+            public void Purchase()
         {
-            Console.WriteLine($"Use id o purcase your product");
             int val = int.Parse(Console.ReadLine());
+            
+
+
             foreach (Product product in products)
             {
-                if (product.Id == val)
+                   
+                    if (product.Id == val)
                 {
 
-                    if (product.Price <= AviableFound)
+                    if (  product.Price <= kronorpool)
                     {
-                        AviableFound -= product.Price;
+                        kronorpool -= product.Price;
              
-                        Console.WriteLine($"now is {AviableFound} kr");
+                        Console.WriteLine($"now is {kronorpool} kr");
                     }
+                }else if(kronorpool < product.Price)
+                {
+                    Console.WriteLine($"To low to purchase");
                 }
             }
         }
+
+        public  void MoneyBack()
+        {
+            foreach (int val in kr)
+            {
+                int antal = kronorpool / val;
+                kronorpool -= antal * val; 
+                if (antal > 0)
+                {
+                    Console.WriteLine("You get back:");
+                    Console.WriteLine("{1} x {0}kr", val, antal);
+
+                }
+            }
+        }//sepmoney
 
         public void ShowAll()
         {
@@ -94,9 +152,10 @@ namespace VendingMachine
             {
                 Console.WriteLine($"id:{product.Id} Product {product.Name} Cost = {product.Price}");
             }
-                
 
-            
+           
+
         }
+        
     }
 }

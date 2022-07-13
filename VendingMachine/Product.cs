@@ -8,7 +8,10 @@ namespace VendingMachine
 {
     public abstract class Product 
     {
-
+        public Product()
+        {
+           
+        }
 
         public Product(string name, int price)
         {

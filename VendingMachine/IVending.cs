@@ -10,7 +10,7 @@ namespace VendingMachine
     {
         public void Purchase();
         public void ShowAll();
-        public int InsertMoney(int money);
+        public void InsertMoney();
         public void EndTransaction();
     }
 }
