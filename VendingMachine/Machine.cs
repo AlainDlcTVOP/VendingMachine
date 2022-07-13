@@ -24,7 +24,7 @@ namespace VendingMachine
 
 
 
-
+            Start();
             InsertMoney();
             CreateListOfProducts();
             
@@ -81,7 +81,7 @@ namespace VendingMachine
                 }
                 catch
                 {
-                   
+                    Console.Write("Catch error ");
                 }
 
                 bool acceptable = false;
