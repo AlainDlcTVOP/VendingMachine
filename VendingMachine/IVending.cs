@@ -9,7 +9,7 @@ namespace VendingMachine
      interface IVending
     {
         public void Purchase();
-        public void ShowAll();
+        public string[] ShowAll();
         public void InsertMoney(bool test,string val);
         public void EndTransaction();
     }
