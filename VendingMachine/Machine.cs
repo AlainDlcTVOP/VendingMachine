@@ -78,8 +78,8 @@ namespace VendingMachine
 
         public void EndTransactionTest(Product product)
         {
-            
-            
+            kronorpool = product.Price;
+
         }
 
         public void InsertMoney(bool sert, string val )
@@ -142,11 +142,12 @@ namespace VendingMachine
                         Console.WriteLine($"Use : {product.Usi}");
                         
                     }
-                    
+                    break;
                 }
                 else if (kronorpool < product.Price)
                 {
                     Console.WriteLine($"To low to purchase");
+                   
                 }
 
             }
@@ -164,16 +165,23 @@ namespace VendingMachine
 
         public void ShowAll()
         {
+            
 
 
-            foreach(Product product in products)
+            foreach (Product product in products)
             {
-                Console.WriteLine($"id:{product.Id} Product {product.Name} Cost = {product.Price} Description: {product.Description}");
+                 Console.WriteLine($"id:{product.Id} Product {product.Name} Cost = {product.Price} Description: {product.Description}");
             }
 
            
+           
 
         }
-        
+        public void ShowAllProdTest(Product product)
+        {
+            _ = product.Id;
+        }
+
+
     }
 }
