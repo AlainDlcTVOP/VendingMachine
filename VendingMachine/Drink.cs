@@ -8,15 +8,18 @@ namespace VendingMachine
 {
      class Drink :Product
     {
-        public Drink(string name, int price) : base(name, price)
+        public Drink(string name, int price, string description, string usi) : base(name, price, description, usi)
         {
         }
 
-        public override void Examine()
+        public override void Examine(Product p)
         {
-            Console.WriteLine("Is");
+            //, to show the product’s price and info
+
+
+            Console.WriteLine($"{p.Description}");
         }
-        public override void Use()
+        public override void Use(Product p)
         {
             Console.WriteLine("Is");
         }

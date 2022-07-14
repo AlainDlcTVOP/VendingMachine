@@ -13,21 +13,25 @@ namespace VendingMachine
            
         }
 
-        public Product(string name, int price)
+        public Product(string name, int price, string description,string usi)
         {
             Name = name;
             Price = price;
             _index++;
             Id = _index;
+            Description = description;
+            Usi = usi;
         }
 
         public string Name { get; set; }
+        public string Description { get; set; }
+        public string Usi { get; }
         public int Price { get; set; }
         public int Id { get; set; }
 
         private static int _index = 0;
-        public abstract void Use();
-        public abstract void Examine();
+        public abstract void Use(Product p);
+        public abstract void Examine(Product p);
 
 
 
