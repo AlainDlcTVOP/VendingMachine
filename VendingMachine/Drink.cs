@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VendingMachine
 {
-     class Drink :Product
+     public class Drink :Product
     {
         public Drink(string name, int price, string description, string usi) : base(name, price, description, usi)
         {

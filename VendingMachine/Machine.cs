@@ -22,15 +22,9 @@ namespace VendingMachine
         public Machine()
         {
 
-
-
             Start();
-           
-           
-           
             CreateListOfProducts();
-           
-            
+              
         }
         public void Start()
         {
@@ -39,25 +33,25 @@ namespace VendingMachine
 
         private void CreateListOfProducts()
         {
-            Cheese cheese = new Cheese("Blue cheese", 9, "Fits well with wine and cheese platter", "Room temperature with charcuterie products");
+            Cheese cheese = new Cheese("Blue cheese", 29, "Fits well with wine and cheese platter", "Room temperature with charcuterie products");
             products.Add(cheese);
-            cheese = new Cheese("Cheddar", 12, "Hard or melted ", "For the best burgers taste");
+            cheese = new Cheese("Cheddar", 63, "Hard or melted ", "For the best burgers taste");
             products.Add(cheese);
-            cheese = new Cheese("Brie", 3, "French delicate", "cheese platter");
+            cheese = new Cheese("Brie", 30, "French delicate", "cheese platter");
             products.Add(cheese);
 
-            Meet meet = new Meet("Fillet of beef", 40, "Juicy and tender", "For Grill ");
+            Meet meet = new Meet("Fillet of beef", 400, "Juicy and tender", "For Grill ");
             products.Add(meet);
-            meet = new Meet("Sirloin", 16, "Protein rich", "Family dinners");
+            meet = new Meet("Sirloin", 160, "Protein rich", "Family dinners");
             products.Add(meet);
-            meet = new Meet("Ground beef", 8, "Protein rich and low in fat", "Perfect for pasta");
+            meet = new Meet("Ground beef", 80, "Protein rich and low in fat", "Perfect for pasta");
             products.Add(meet);
 
-            Drink drink = new Drink("Rom", 20, "Len oh good taste", "Suitable for mixing with cocacola");
+            Drink drink = new Drink("Rom", 276, "Len oh good taste", "Suitable for mixing with cocacola");
             products.Add(drink);
-            drink = new Drink("Vodka", 40, "Strong 40% alcohol", "Best suited for parties");
+            drink = new Drink("Vodka", 350, "Strong 40% alcohol", "Best suited for parties");
             products.Add(drink);
-            drink = new Drink("Tequila", 20, "Original from mexico", "Lemon and salt for the best taste experiences");
+            drink = new Drink("Tequila", 320, "Original from mexico", "Lemon and salt for the best taste experiences");
             products.Add(drink);
 
 
@@ -67,6 +61,7 @@ namespace VendingMachine
 
         public void EndTransaction()
         {
+
             foreach (int val in kr)
             {
                 int antal = kronorpool / val;
@@ -78,11 +73,19 @@ namespace VendingMachine
 
                 }
             }
+
+        }
+
+        public void EndTransactionTest(Product product)
+        {
+            
+            
         }
 
         public void InsertMoney(bool sert, string val )
         {
-            //1kr, 5kr,10kr,20kr, 50kr, 100kr, 500kr and 1000kr.
+            Console.WriteLine("Valid input 1kr, 5kr, 10kr, 20kr, 50kr, 100kr, 500kr and 1000kr");
+
             while (true)
             {
                 bool test = true;
@@ -124,30 +127,36 @@ namespace VendingMachine
         public void Purchase()
         {
 
-                int val = int.Parse(Console.ReadLine());
+            int val = int.Parse(Console.ReadLine());
 
-                foreach (Product product in products)
+            foreach (Product product in products)
+            {
+
+                if (product.Id == val)
                 {
 
-                    if (product.Id == val)
+                    if (product.Price <= kronorpool)
                     {
-
-                        if (product.Price <= kronorpool)
-                        {
-                            kronorpool -= product.Price;
-
-                            Console.WriteLine($"now is {kronorpool} kr");
-                            Console.WriteLine($"Use : {product.Usi}");
+                        ExecutePurchase(product);
+                        Console.WriteLine($"now is {kronorpool} kr");
+                        Console.WriteLine($"Use : {product.Usi}");
+                        
                     }
-                    }
-                    else if (kronorpool < product.Price)
-                    {
-                        Console.WriteLine($"To low to purchase");
-                    }
-
-               
+                    
                 }
-         
+                else if (kronorpool < product.Price)
+                {
+                    Console.WriteLine($"To low to purchase");
+                }
+
+            }
+
+        }
+
+        public void ExecutePurchase(Product p)
+        {
+          
+            kronorpool -= p.Price;
         }
         
 

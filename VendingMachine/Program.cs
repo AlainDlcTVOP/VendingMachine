@@ -3,6 +3,7 @@ Machine m = new Machine();
 
 
 m.InsertMoney(true, "");
+
 bool finished = false;
 
 do
@@ -10,14 +11,16 @@ do
     
     
     m.ShowAll();
+
     Console.WriteLine("1 --> Purchase.");
     Console.WriteLine("2 --> EndTransaction.");
     Console.Write("Choose : 1 or 2  \n");
 
 
     int selection = int.Parse(Console.ReadLine());
- 
 
+
+ 
     switch (selection)
     {
 
