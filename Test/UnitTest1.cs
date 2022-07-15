@@ -27,13 +27,10 @@ namespace Test
         public void EndTransactionTest()
         {
             Machine machine = new Machine();
-            int value = 100;
-            int[] x = new int[] { 1000, 500, 100, 50, 20, 10, 5, 1 };
-           
-            machine.InsertMoney(false, value.ToString()); 
+            machine.kronorpool = 100; 
             machine.EndTransaction();
-          
-            Assert.Equal(machine.kronorpool, 0 );
+            int sut = machine.kronorpool;
+            Assert.Equal(0, sut );
         }
         [Fact]
         public void EndTransactionTest2()
@@ -47,5 +44,15 @@ namespace Test
 
             Assert.Equal(x, xs);
         }
+
+        [Fact]
+        public void DoesMachineCointianProduct()
+        {
+            Machine sut = new Machine();
+            Assert.True(sut.products.Count > 0);
+
+        }
+           
+        
     }
 }

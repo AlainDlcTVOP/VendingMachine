@@ -10,7 +10,7 @@ namespace VendingMachine
     public class Machine : IVending
     {
 
-        List<Product> products = new List<Product>();
+        public List<Product> products = new List<Product>();
 
         public  int[] kr = new int[] { 1000, 500, 100, 50, 20, 10, 5,  1 };
 
@@ -75,7 +75,17 @@ namespace VendingMachine
                     Console.WriteLine($"{val} x {antal}kr");
                 }
             }
+
             return x;
+
+
+        }
+
+        public void EndTransactionTest(Product product)
+        {
+            kronorpool = product.Price;
+
+
         }
 
       
@@ -145,6 +155,14 @@ namespace VendingMachine
                         Console.WriteLine($"To low to purchase");
 
                     }
+
+                    break;
+                }
+                else if (kronorpool < product.Price)
+                {
+                    Console.WriteLine($"To low to purchase");
+                   
+
                 }
 
             }

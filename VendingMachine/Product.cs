@@ -31,7 +31,7 @@ namespace VendingMachine
         public string Usi { get; }
         public int Price { get; set; }
         public int Id { get; set; }
-        private int[] x { get; set; }
+        public int[] x { get; set; }
 
         
         private static int _index = 0;
