@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OpenXmlPowerTools;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,6 +22,8 @@ namespace VendingMachine
             Id = _index;
             Description = description;
             Usi = usi;
+            _newX = x;
+
         }
 
         public string Name { get; set; }
@@ -28,8 +31,11 @@ namespace VendingMachine
         public string Usi { get; }
         public int Price { get; set; }
         public int Id { get; set; }
+        private int[] x { get; set; }
 
+        
         private static int _index = 0;
+        private static int[] _newX = new int[10] ;
         public abstract void Use(Product p);
         public abstract void Examine(Product p);
 

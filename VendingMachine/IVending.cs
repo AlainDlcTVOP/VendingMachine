@@ -11,6 +11,6 @@ namespace VendingMachine
         public void Purchase();
         public void ShowAll();
         public void InsertMoney(bool test,string val);
-        public void EndTransaction();
+        public int[] EndTransaction();
     }
 }

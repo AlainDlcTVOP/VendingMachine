@@ -59,29 +59,26 @@ namespace VendingMachine
 
 
 
-        public void EndTransaction()
+        public int[] EndTransaction()
         {
-
-            foreach (int val in kr)
+            int[] x =new int[kr.Length];
+            Console.WriteLine("You get back:");
+            for (int i = 0; i < kr.Length; i++)
             {
+                int val = kr[i];    
                 int antal = kronorpool / val;
                 kronorpool -= antal * val;
                 if (antal > 0)
                 {
-                    Console.WriteLine("You get back:");
+                    x[i] = antal;
+                   
                     Console.WriteLine($"{val} x {antal}kr");
-
                 }
             }
-
+            return x;
         }
 
-        public void EndTransactionTest(Product product)
-        {
-            
-            
-        }
-
+      
         public void InsertMoney(bool sert, string val )
         {
             Console.WriteLine("Valid input 1kr, 5kr, 10kr, 20kr, 50kr, 100kr, 500kr and 1000kr");
@@ -129,6 +126,7 @@ namespace VendingMachine
 
             int val = int.Parse(Console.ReadLine());
 
+            
             foreach (Product product in products)
             {
 
@@ -140,17 +138,17 @@ namespace VendingMachine
                         ExecutePurchase(product);
                         Console.WriteLine($"now is {kronorpool} kr");
                         Console.WriteLine($"Use : {product.Usi}");
-                        
+                        break;
                     }
-                    
-                }
-                else if (kronorpool < product.Price)
-                {
-                    Console.WriteLine($"To low to purchase");
+                     else if (kronorpool < product.Price)
+                    {
+                        Console.WriteLine($"To low to purchase");
+
+                    }
                 }
 
             }
-
+           
         }
 
         public void ExecutePurchase(Product p)

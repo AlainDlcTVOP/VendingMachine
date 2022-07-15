@@ -20,16 +20,18 @@ do
     int selection = int.Parse(Console.ReadLine());
 
 
- 
+
     switch (selection)
     {
 
-       
+
         case 1:
-           
+
             m.Purchase();
             break;
         case 2:
+
+           
             m.EndTransaction();
             finished = true;
             break;
