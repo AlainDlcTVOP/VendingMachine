@@ -178,23 +178,16 @@ namespace VendingMachine
 
        
 
-        public string[] ShowAll()
+        public void ShowAll()
         {
-
-            string[] result = new string[products.Count];
 
             foreach (Product product in products)
             {
                  Console.WriteLine($"id:{product.Id} Product {product.Name} Cost = {product.Price} Description: {product.Description}");
             }
 
-            return result;
-
-
-
         }
-       
-
+ 
 
     }
 }
